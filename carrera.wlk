@@ -10,8 +10,8 @@ class Carrera {
 
 
 class Materia {
-    var property requisitos = #{}
-    var property carrera  
+    const property requisitos = #{}
+    const property carrera  
 
     method agregarRequisito(maRequisito) {
         requisitos.add(maRequisito)
@@ -29,6 +29,7 @@ class HistorialAprobacion {
 class Estudiante {
     const property materiasAprobadas = #{}
     const property carreras = #{}
+    const property todasLasMateriasAnotadas = #{} 
 
     method incribirCarrera(carrea) {
         carreras.add(carrea)
@@ -36,7 +37,14 @@ class Estudiante {
     }
 
     method aprobar(materia_, nota_) {
+        self.validarMateriaAprobada(materia_)
         materiasAprobadas.add(new HistorialAprobacion(materia = materia_, nota = nota_))
+      
+    }
+    method validarMateriaAprobada(materia_) {
+        if(carreras.find({ ma => ma.materia() == materia_ })) {
+            self.error("La materia ya fue agregada")
+        }
       
     }
 
