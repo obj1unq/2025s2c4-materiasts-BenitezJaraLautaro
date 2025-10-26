@@ -73,12 +73,12 @@ class Estudiante {
     }
 
     method InceibirseMateria(materia_) {
-        self.PuedeInscribirseAMateria(materia_)
+        self.puedeInscribirseAMateria(materia_)
         materiasInscriptas.add(materia_)
       
     }
 
-    method PuedeInscribirseAMateria(materia_) {
+    method puedeInscribirseAMateria(materia_) {
         if (! carreras.any({ c => c.contains(materia_) })) {
             self.error("la materia no pertenece a ninguna carrera")
         } else {
@@ -94,6 +94,11 @@ class Estudiante {
                 }
             }
         }    
+    }
+
+    method puedeInscribirseAMateria_(materia_) {
+        
+      
     }
   
 }
